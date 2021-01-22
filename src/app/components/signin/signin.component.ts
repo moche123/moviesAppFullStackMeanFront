@@ -29,31 +29,23 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
   }
   iniciarSesion({user,password}:{user:any,password:any}):void{
-      this._auth.signin(user,password).subscribe((token:any)=>{
-        
-    
-        if(token.accessToken!=''){
+      this._auth.signin(user,password).subscribe((token)=>{
+     
           this._snackBar.open('Correct!!', 'Close', {
             duration: 1500,
             horizontalPosition: 'center',
             verticalPosition: 'top',
           });
-          this._auth.logged = true
+          //this._auth.logged = true
           localStorage.setItem("token", token.accessToken);
           this._router.navigate(['/allmovies']);
-          
-        }
-        if(token.message=="User not found")
-        {
-          this._snackBar.open('Ups, something is wrong!!. Please try again', 'Close', {
-            duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-          });
-          this._auth.logged = false
-        }
-       
-        
+
+      },(error)=>{
+        this._snackBar.open('Ups, something is wrong!!. Please try again', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
       });
      
       

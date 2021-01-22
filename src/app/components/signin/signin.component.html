@@ -1,5 +1,7 @@
 <form [formGroup]="loginForm" (submit)="iniciarSesion(loginForm.value)">
     <h1><strong>SIGN-IN</strong></h1>
+    <img src="https://icon-library.com/images/icon-login/icon-login-10.jpg" width="200px" alt="">
+    <br>
     <mat-form-field appearance="outline">
         <mat-label>User</mat-label>
         <input matInput formControlName="user" maxlength="20">

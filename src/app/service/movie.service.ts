@@ -11,7 +11,7 @@ export class MovieService {
   private httpOptions = {
     headers: {
       //'Content-Type': 'application/json',
-      Authorization: 'Bearer '+localStorage.getItem('token')
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   };
   constructor(private http:HttpClient) { }
@@ -19,6 +19,7 @@ export class MovieService {
     return this.http.get<Movie[]>(this.urlIndex);
   }
   getMoviePagePrivate():Observable<Movie[]>{
+    console.log(this.httpOptions);
     return this.http.get<Movie[]>(this.url,this.httpOptions);
   }
 }

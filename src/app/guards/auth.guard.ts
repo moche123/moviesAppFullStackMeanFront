@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       //!this._auth.logged
-    if(!localStorage.getItem("token")){
+    if(!localStorage.getItem("token") || localStorage.getItem("token")==undefined){
       this._snackBar.open('You cannot enter, maybe you sessión expired, you have llogout or you have not registered yet', 'Close', {
         duration: 3500,
         horizontalPosition: 'center',

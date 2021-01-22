@@ -9,7 +9,7 @@ import { Movie } from '../../models/movie';
 })
 export class HomeComponent implements OnInit {
 
-  genders = ["Comedia","Animated","Action","Horror"];
+  
   showFiller = false;
   twolastMovies:Movie[] = [];
 

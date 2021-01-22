@@ -18,9 +18,10 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
-import { AlertComponent } from './components/alert/alert.component';
+
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AllmoviesComponent } from './components/allmovies/allmovies.component';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
@@ -29,8 +30,10 @@ import { AllmoviesComponent } from './components/allmovies/allmovies.component';
     HomeComponent,
     SignupComponent,
     SigninComponent,
-    AlertComponent,
-    AllmoviesComponent
+
+    AllmoviesComponent,
+
+    CardComponent
    
   ],
   imports: [

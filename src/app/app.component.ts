@@ -15,11 +15,20 @@ export class AppComponent implements OnInit{
 
   }
   
-  showToken(){
-    let token = this.authService.getToken();
-    console.log(token);
+  isLogged(){
+    let token  = localStorage.getItem("token") || null
+    let size = token?.length
+    
+    if(size && size>0 && token!=null){
+      return true
+    }
+    else{
+      return false
+    }
+   
   }
   logout(){
     localStorage.removeItem("token");
+    this.authService.logged =false
   }
 }

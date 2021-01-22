@@ -14,10 +14,16 @@
 
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <button mat-raised-button routerLink="/signin"><mat-icon>vpn_key </mat-icon> Sign In</button>
-    <button mat-raised-button><mat-icon>account_circle </mat-icon> Sign Up</button>
-    <button mat-raised-button routerLink="/allmovies"><mat-icon>movie</mat-icon> Private Route</button>
+    <div *ngIf="!isLogged() else noLogged">
+      <button mat-raised-button routerLink="/signin"><mat-icon>vpn_key </mat-icon> Sign In</button>
+      <button mat-raised-button><mat-icon>account_circle </mat-icon> Sign Up</button>
+    </div>
+    
+    <ng-template #noLogged>
+      <button mat-raised-button routerLink="/allmovies"><mat-icon>movie</mat-icon> Private Route</button>
     <button mat-raised-button routerLink="/" (click)="logout()"><mat-icon>directions_run</mat-icon> Log Out</button>
+    </ng-template>
+    
   </mat-drawer>
 
   <div class="content">

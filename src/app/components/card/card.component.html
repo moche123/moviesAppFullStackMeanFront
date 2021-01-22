@@ -1,0 +1,20 @@
+<mat-card class="example-card" >
+    <mat-card-header>
+      <div mat-card-avatar [ngClass]="{
+        'example-header-image-animated':movie.gender == 1,
+        'example-header-image-horror':movie.gender == 3,
+        'example-header-image-action':movie.gender == 2  
+      }"></div>
+      <mat-card-title>{{movie.title}}</mat-card-title>
+      <mat-card-subtitle>{{genders[movie.gender]}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="movie.urlImage" alt="Photo of a Shiba Inu" [style.width.px]="widthS" [style.height.px]="heightS">
+    <mat-card-content>
+      <p class="description">
+        {{movie.description}}
+        . <strong>Sign up for seeing this</strong>
+      </p>
+    </mat-card-content>
+    <hr>
+    <br>
+  </mat-card>
