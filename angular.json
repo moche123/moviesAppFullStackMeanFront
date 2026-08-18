@@ -108,35 +108,22 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "front:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "front:serve:production"
-            }
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "3ab97a73-50e8-4cb8-b547-00191d993a94"
+    "analytics": "3ab97a73-50e8-4cb8-b547-00191d993a94",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   },
   "schematics": {
     "@schematics/angular:component": {
