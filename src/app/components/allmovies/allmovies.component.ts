@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MovieService } from '../../service/movie.service';
 import { Movie } from '../../models/movie'; 
 @Component({
     selector: 'app-allmovies',
     templateUrl: './allmovies.component.html',
     styleUrls: ['./allmovies.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AllmoviesComponent implements OnInit {
