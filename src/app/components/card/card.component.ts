@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Movie } from 'src/app/models/movie';
+import { Movie } from '../../models/movie';
 
 @Component({
     selector: 'app-card',
