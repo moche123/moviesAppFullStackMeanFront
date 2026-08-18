@@ -135,7 +135,6 @@
       }
     }
   },
-  "defaultProject": "front",
   "cli": {
     "analytics": "3ab97a73-50e8-4cb8-b547-00191d993a94"
   }

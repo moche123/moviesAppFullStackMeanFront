@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup,Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../../models/user';
@@ -11,12 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  loginForm!: FormGroup 
+  loginForm!: UntypedFormGroup 
   user:User = new User();
   public token:string = '';
   constructor(
     private _auth:AuthService,
-    private _fb: FormBuilder,
+    private _fb: UntypedFormBuilder,
     private _snackBar: MatSnackBar,
     private _router:Router
   ) {
