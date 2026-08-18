@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './components/home/home.component';
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -24,36 +24,26 @@ import { AllmoviesComponent } from './components/allmovies/allmovies.component';
 import { CardComponent } from './components/card/card.component';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    SignupComponent,
-    SigninComponent,
-
-    AllmoviesComponent,
-
-    CardComponent
-   
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    //Angular material
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomeComponent,
+        SignupComponent,
+        SigninComponent,
+        AllmoviesComponent,
+        CardComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        //Angular material
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSnackBarModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
