@@ -1,5 +1,7 @@
 <h1><strong>OUR LAST TWO MOVIES</strong></h1>
 <div class="lastmovies">
-  <app-card *ngFor="let movie of twolastMovies" [movie]=movie [widthS]=400 [heightS]=500></app-card>
+  @for (movie of twolastMovies; track movie) {
+    <app-card [movie]=movie [widthS]=400 [heightS]=500></app-card>
+  }
 </div>
 

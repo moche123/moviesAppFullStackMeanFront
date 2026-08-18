@@ -1,6 +1,8 @@
 <!-- <div *ngFor="let movie of movies">
-    {{movie.title}}
+{{movie.title}}
 </div> -->
 <h1><b>SEE ALL THAT YOU WANT TO LOVE</b></h1><br>
 
-<app-card *ngFor="let movie of movies" [movie]=movie [widthS]=270 [heightS]=334></app-card>
+@for (movie of movies; track movie) {
+  <app-card [movie]=movie [widthS]=270 [heightS]=334></app-card>
+}
