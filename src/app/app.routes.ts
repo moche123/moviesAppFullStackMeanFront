@@ -1,12 +1,10 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AllmoviesComponent } from './components/allmovies/allmovies.component';
 import { HomeComponent } from './components/home/home.component';
 import { SigninComponent } from './components/signin/signin.component';
-import { AuthGuard } from './guards/auth.guard';
+import { authGuard } from './guards/auth.guard';
 
-
-const routes: Routes = [
+export const routes: Routes = [
   {
     path:'',
     component:HomeComponent
@@ -18,12 +16,6 @@ const routes: Routes = [
   {
     path:'allmovies',
     component:AllmoviesComponent,
-    canActivate:[AuthGuard]  
+    canActivate:[authGuard]
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

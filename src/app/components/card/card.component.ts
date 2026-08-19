@@ -1,25 +1,18 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { Movie } from '../../models/movie';
+import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardImage, MatCardContent } from '@angular/material/card';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-card',
     templateUrl: './card.component.html',
     styleUrls: ['./card.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatCard, MatCardHeader, MatCardAvatar, NgClass, MatCardTitle, MatCardSubtitle, MatCardImage, MatCardContent]
 })
-export class CardComponent implements OnInit {
-
-  constructor(
-  ) { }
-
+export class CardComponent {
   genders = ["Comedia","Animated","Action","Horror"];
-  @Input() movie:Movie =  new Movie();
-  @Input()widthS:number = 0 ;
-  @Input()heightS:number = 0;
-  ngOnInit(): void {
-    
-    console.log(this.movie)
-  }
-
+  movie = input<Movie>(new Movie());
+  widthS = input<number>(0);
+  heightS = input<number>(0);
 }

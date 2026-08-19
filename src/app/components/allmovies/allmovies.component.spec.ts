@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { AllmoviesComponent } from './allmovies.component';
 
@@ -8,8 +10,9 @@ describe('AllmoviesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AllmoviesComponent ]
-    })
+    imports: [AllmoviesComponent],
+    providers: [provideHttpClient(), provideHttpClientTesting()]
+})
     .compileComponents();
   });
 

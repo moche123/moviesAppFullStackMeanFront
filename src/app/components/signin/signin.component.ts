@@ -1,19 +1,22 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup,Validators } from '@angular/forms';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
+import { MatFormField, MatLabel, MatHint } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-signin',
     templateUrl: './signin.component.html',
     styleUrls: ['./signin.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatHint, MatButton]
 })
-export class SigninComponent implements OnInit {
-  loginForm!: UntypedFormGroup 
+export class SigninComponent {
+  loginForm!: UntypedFormGroup
   user:User = new User();
   constructor(
     private _auth:AuthService,
@@ -27,8 +30,6 @@ export class SigninComponent implements OnInit {
     })
    }
 
-  ngOnInit(): void {
-  }
   iniciarSesion({user,password}:{user:any,password:any}):void{
       this._auth.signin(user,password).subscribe({
         next: ()=>{
