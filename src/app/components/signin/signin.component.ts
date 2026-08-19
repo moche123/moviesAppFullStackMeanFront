@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 export class SigninComponent implements OnInit {
   loginForm!: UntypedFormGroup 
   user:User = new User();
-  public token:string = '';
   constructor(
     private _auth:AuthService,
     private _fb: UntypedFormBuilder,
@@ -31,26 +30,23 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
   }
   iniciarSesion({user,password}:{user:any,password:any}):void{
-      this._auth.signin(user,password).subscribe((token)=>{
-     
+      this._auth.signin(user,password).subscribe({
+        next: ()=>{
           this._snackBar.open('Correct!!', 'Close', {
             duration: 1500,
             horizontalPosition: 'center',
             verticalPosition: 'top',
           });
-          //this._auth.logged = true
-          localStorage.setItem("token", token.accessToken);
           this._router.navigate(['/allmovies']);
-
-      },(error)=>{
-        this._snackBar.open('Ups, something is wrong!!. Please try again', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-        });
+        },
+        error: ()=>{
+          this._snackBar.open('Ups, something is wrong!!. Please try again', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
+        }
       });
-     
-      
   }
  
 }

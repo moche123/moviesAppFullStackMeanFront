@@ -18,19 +18,11 @@ export class AppComponent implements OnInit{
   }
   
   isLogged(){
-    let token  = localStorage.getItem("token") || null
-    let size = token?.length
-    
-    if(size && size>0 && token!=null){
-      return true
-    }
-    else{
-      return false
-    }
-   
+    return this.authService.isLoggedIn();
   }
   logout(){
-    localStorage.removeItem("token");
-    this.authService.logged =false
+    this.authService.logout().subscribe({
+      error: ()=>this.authService.clearTokens()
+    });
   }
 }

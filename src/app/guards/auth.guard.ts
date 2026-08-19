@@ -16,16 +16,16 @@ export class AuthGuard  {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      //!this._auth.logged
-    if(!localStorage.getItem("token") || localStorage.getItem("token")==undefined){
+    if(!this._auth.isLoggedIn()){
       this._snackBar.open('You cannot enter, maybe you sessión expired, you have llogout or you have not registered yet', 'Close', {
         duration: 3500,
         horizontalPosition: 'center',
         verticalPosition: 'top',
       });
       this._router.navigate(['/signin']);
+      return false;
     }
-    return localStorage.getItem("token") != null;
+    return true;
   }
   
 }

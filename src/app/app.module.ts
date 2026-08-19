@@ -11,7 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withInterceptorsFromDi, withXhr } from '@angular/common/http';
+import { authInterceptor } from './interceptors/auth.interceptor';
 import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './components/home/home.component';
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -45,5 +46,5 @@ import { CardComponent } from './components/card/card.component';
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSnackBarModule], providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())] })
+        MatSnackBarModule], providers: [provideHttpClient(withXhr(), withInterceptors([authInterceptor]), withInterceptorsFromDi())] })
 export class AppModule { }
