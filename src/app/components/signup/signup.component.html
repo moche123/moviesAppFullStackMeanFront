@@ -1,1 +1,28 @@
-<p>signup works!</p>
+<section class="booth">
+  <form class="booth__card" [formGroup]="signupForm" (submit)="crearCuenta(signupForm.value)">
+    <mat-icon class="booth__mark">local_activity</mat-icon>
+    <p class="booth__eyebrow">First time here</p>
+    <h1 class="booth__title">Sign up</h1>
+
+    <mat-form-field appearance="outline" class="booth__field">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" maxlength="40">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="booth__field">
+      <mat-label>User</mat-label>
+      <input matInput formControlName="user" maxlength="20">
+      <mat-hint align="end">{{signupForm.value.user.length}}/20</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="booth__field">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" maxlength="50">
+      <mat-hint align="end">{{signupForm.value.password.length}}/50</mat-hint>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="booth__submit" [disabled]="signupForm.invalid">Create account</button>
+
+    <p class="booth__switch">Already have a ticket? <a routerLink="/signin">Sign in</a></p>
+  </form>
+</section>

@@ -1,7 +1,15 @@
-<h1><strong>OUR LAST TWO MOVIES</strong></h1>
-<div class="lastmovies">
-  @for (movie of twolastMovies(); track movie) {
-    <app-card [movie]=movie [widthS]=400 [heightS]=500></app-card>
-  }
-</div>
+<section class="hero">
+  <p class="hero__eyebrow">Now showing</p>
+  <h1 class="hero__title">Tonight's Double Bill</h1>
+  <p class="hero__subtitle">Two picks fresh off the reel, free to preview. Sign in for the full catalog.</p>
 
+  @if (twolastMovies().length) {
+    <div class="hero__bill">
+      @for (movie of twolastMovies(); track movie) {
+        <app-card [movie]="movie" size="featured" [locked]="true"></app-card>
+      }
+    </div>
+  } @else {
+    <p class="hero__empty">No reels loaded yet. Check back soon.</p>
+  }
+</section>

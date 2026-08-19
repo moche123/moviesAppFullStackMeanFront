@@ -1,0 +1,71 @@
+.booth {
+  min-height: calc(100vh - 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(232, 163, 61, .06), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(173, 46, 63, .08), transparent 45%);
+}
+
+.booth__card {
+  width: 100%;
+  max-width: 24rem;
+  background: var(--ink-raised);
+  border: 1px solid var(--ink-line);
+  border-radius: 14px;
+  padding: 2.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .6);
+}
+
+.booth__mark {
+  color: var(--marquee-gold);
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: .75rem;
+}
+
+.booth__eyebrow {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin: 0 0 .15rem;
+}
+
+.booth__title {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  letter-spacing: .02em;
+  margin: 0 0 1.5rem;
+  color: var(--paper);
+}
+
+.booth__field {
+  width: 100%;
+}
+
+.booth__submit {
+  margin-top: .5rem;
+  height: 2.75rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.booth__switch {
+  margin: 1.25rem 0 0;
+  text-align: center;
+  font-size: .85rem;
+  color: var(--paper-dim);
+
+  a {
+    color: var(--marquee-gold);
+    font-weight: 500;
+  }
+}

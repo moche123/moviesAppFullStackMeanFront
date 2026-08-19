@@ -24,6 +24,13 @@ export class AuthService {
     );
   }
 
+  signup(name:string,username:string,password:string):Observable<any>{
+    const parameters = {"name":name,"username":username,"password":password};
+    return this._http.post<any>(`${API_URL}/signup`,parameters).pipe(
+      tap((res)=>this.setTokens(res.accessToken,res.refreshToken))
+    );
+  }
+
   refreshAccessToken():Observable<string>{
     const currentRefreshToken = this.refreshToken();
     return this._http.post<{accessToken:string}>(`${API_URL}/refresh-token`,{refreshToken:currentRefreshToken}).pipe(

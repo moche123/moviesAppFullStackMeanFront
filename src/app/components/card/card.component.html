@@ -1,20 +1,25 @@
-<mat-card class="example-card" >
-    <mat-card-header>
-      <div mat-card-avatar [ngClass]="{
-        'example-header-image-animated':movie().gender == 1,
-        'example-header-image-horror':movie().gender == 3,
-        'example-header-image-action':movie().gender == 2
-      }"></div>
-      <mat-card-title>{{movie().title}}</mat-card-title>
-      <mat-card-subtitle>{{genders[movie().gender]}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="movie().urlImage" alt="Photo of a Shiba Inu" [style.width.px]="widthS()" [style.height.px]="heightS()">
-    <mat-card-content>
-      <p class="description">
-        {{movie().description}}
-        . <strong>Sign up for seeing this</strong>
-      </p>
-    </mat-card-content>
-    <hr>
-    <br>
-  </mat-card>
+<article class="ticket" [class.ticket--featured]="size() === 'featured'">
+  <div class="ticket__poster">
+    <img [src]="movie().urlImage" [alt]="movie().title" [attr.loading]="size() === 'featured' ? 'eager' : 'lazy'">
+    @if (locked()) {
+      <div class="ticket__lock">
+        <mat-icon>lock</mat-icon>
+        <span>Sign in to watch</span>
+      </div>
+    }
+  </div>
+  <div class="ticket__perf" aria-hidden="true"></div>
+  <div class="ticket__stub">
+    <div class="ticket__row">
+      <h3 class="ticket__title">{{movie().title}}</h3>
+      <span class="ticket__genre" [class]="'ticket__genre--' + movie().gender">
+        <mat-icon>{{genreIcons[movie().gender]}}</mat-icon>
+        {{genres[movie().gender]}}
+      </span>
+    </div>
+    <p class="ticket__desc">{{movie().description}}</p>
+    @if (movie().updatedAt) {
+      <span class="ticket__meta">Added {{movie().updatedAt | date:'MMM d, y' | uppercase}}</span>
+    }
+  </div>
+</article>

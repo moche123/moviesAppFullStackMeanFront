@@ -1,8 +1,14 @@
-<!-- <div *ngFor="let movie of movies">
-{{movie.title}}
-</div> -->
-<h1><b>SEE ALL THAT YOU WANT TO LOVE</b></h1><br>
+<section class="catalog">
+  <p class="catalog__eyebrow">Your catalog</p>
+  <h1 class="catalog__title">Everything you can watch</h1>
 
-@for (movie of movies(); track movie) {
-  <app-card [movie]=movie [widthS]=270 [heightS]=334></app-card>
-}
+  @if (movies().length) {
+    <div class="catalog__grid">
+      @for (movie of movies(); track movie) {
+        <app-card [movie]="movie"></app-card>
+      }
+    </div>
+  } @else {
+    <p class="catalog__empty">Nothing here yet. New titles land soon.</p>
+  }
+</section>

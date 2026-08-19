@@ -1,7 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use './theme-colors' as theme;
+
+html {
+  color-scheme: dark;
+
+  @include mat.theme((
+    color: (
+      primary: theme.$primary-palette,
+      tertiary: theme.$tertiary-palette,
+      theme-type: dark,
+    ),
+    typography: (
+      plain-family: 'Work Sans, sans-serif',
+      brand-family: 'Bebas Neue, sans-serif',
+      bold-weight: 600,
+      medium-weight: 500,
+      regular-weight: 400,
+    ),
+    density: 0,
+  ));
+}
+
+:root {
+  --ink: #0e0b0a;
+  --ink-raised: #1b1512;
+  --ink-line: #332a24;
+  --marquee-gold: #e8a33d;
+  --marquee-gold-dim: #a46b00;
+  --velvet-red: #ad2e3f;
+  --paper: #f3ede4;
+  --paper-dim: #b9afa3;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-a{
-    text-decoration: none;
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+::selection {
+  background: var(--marquee-gold);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--marquee-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

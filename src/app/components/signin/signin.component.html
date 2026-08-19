@@ -1,24 +1,23 @@
-<form [formGroup]="loginForm" (submit)="iniciarSesion(loginForm.value)">
-    <h1><strong>SIGN-IN</strong></h1>
-    <img src="https://icon-library.com/images/icon-login/icon-login-10.jpg" width="200px" alt="">
-    <br>
-    <mat-form-field appearance="outline">
-        <mat-label>User</mat-label>
-        <input matInput formControlName="user" maxlength="20">
-        <mat-hint align="end">{{loginForm.value.user.length}}/20</mat-hint>
+<section class="booth">
+  <form class="booth__card" [formGroup]="loginForm" (submit)="iniciarSesion(loginForm.value)">
+    <mat-icon class="booth__mark">confirmation_number</mat-icon>
+    <p class="booth__eyebrow">Welcome back</p>
+    <h1 class="booth__title">Sign in</h1>
+
+    <mat-form-field appearance="outline" class="booth__field">
+      <mat-label>User</mat-label>
+      <input matInput formControlName="user" maxlength="20">
+      <mat-hint align="end">{{loginForm.value.user.length}}/20</mat-hint>
     </mat-form-field>
-    <br>
-    <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" maxlength="50">
-        <mat-hint align="end">{{loginForm.value.password.length}}/50</mat-hint>
+
+    <mat-form-field appearance="outline" class="booth__field">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" maxlength="50">
+      <mat-hint align="end">{{loginForm.value.password.length}}/50</mat-hint>
     </mat-form-field>
-    <br>
-    <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Log in</button>
-   
-</form>
-<!-- <app-alert 
-    horizontalPosition='start' 
-    verticalPosition='bottom'
-    mensajeSatisfaccion='Correctamente logueado'
-    mensajeFallido='Incorrecto, ingrese nuevamente datos'></app-alert> -->
+
+    <button mat-raised-button color="primary" class="booth__submit" [disabled]="loginForm.invalid">Log in</button>
+
+    <p class="booth__switch">New here? <a routerLink="/signup">Get your ticket</a></p>
+  </form>
+</section>

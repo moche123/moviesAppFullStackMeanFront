@@ -7,13 +7,15 @@ import { Router } from '@angular/router';
 import { MatFormField, MatLabel, MatHint } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-signin',
     templateUrl: './signin.component.html',
     styleUrls: ['./signin.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatHint, MatButton]
+    imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatHint, MatButton, MatIcon, RouterLink]
 })
 export class SigninComponent {
   loginForm!: UntypedFormGroup

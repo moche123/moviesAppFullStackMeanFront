@@ -1,18 +1,20 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { DatePipe, UpperCasePipe } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
 import { Movie } from '../../models/movie';
-import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardImage, MatCardContent } from '@angular/material/card';
-import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-card',
     templateUrl: './card.component.html',
     styleUrls: ['./card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatCard, MatCardHeader, MatCardAvatar, NgClass, MatCardTitle, MatCardSubtitle, MatCardImage, MatCardContent]
+    imports: [MatIcon, DatePipe, UpperCasePipe]
 })
 export class CardComponent {
-  genders = ["Comedia","Animated","Action","Horror"];
+  readonly genres = ['Comedy', 'Animated', 'Action', 'Horror'];
+  readonly genreIcons = ['theater_comedy', 'animation', 'bolt', 'dark_mode'];
+
   movie = input<Movie>(new Movie());
-  widthS = input<number>(0);
-  heightS = input<number>(0);
+  locked = input<boolean>(false);
+  size = input<'featured' | 'grid'>('grid');
 }

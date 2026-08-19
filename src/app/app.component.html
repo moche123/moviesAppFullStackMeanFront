@@ -1,35 +1,36 @@
 <mat-toolbar class="toolbar">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+  <button mat-icon-button aria-label="Toggle menu" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span><a routerLink="/">MoiMovie-ᗩᕵᕵ </a></span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
+  <a routerLink="/" class="brand">
+    <mat-icon class="brand__mark">local_movies</mat-icon>
+    <span class="brand__word">MoiMovie</span>
+  </a>
+  <span class="spacer"></span>
 </mat-toolbar>
 
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    @if (!isLogged()) {
-      <div>
-        <button mat-raised-button routerLink="/signin"><mat-icon>vpn_key </mat-icon> Sign In</button>
-        <button mat-raised-button><mat-icon>account_circle </mat-icon> Sign Up</button>
-      </div>
-    } @else {
-      <button mat-raised-button routerLink="/allmovies"><mat-icon>movie</mat-icon> Private Route</button>
-      <button mat-raised-button routerLink="/" (click)="logout()"><mat-icon>directions_run</mat-icon> Log Out</button>
-    }
-
-
+<mat-drawer-container class="shell">
+  <mat-drawer #drawer class="nav" mode="over">
+    <nav class="nav__list">
+      @if (!isLogged()) {
+        <a routerLink="/signin" class="nav__link">
+          <mat-icon>vpn_key</mat-icon> Sign in
+        </a>
+        <a routerLink="/signup" class="nav__link nav__link--accent">
+          <mat-icon>confirmation_number</mat-icon> Sign up
+        </a>
+      } @else {
+        <a routerLink="/allmovies" class="nav__link">
+          <mat-icon>movie</mat-icon> Full catalog
+        </a>
+        <a routerLink="/" (click)="logout()" class="nav__link nav__link--exit">
+          <mat-icon>logout</mat-icon> Log out
+        </a>
+      }
+    </nav>
   </mat-drawer>
 
   <div class="content">
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
-<!-- <button (click)="showToken()">CLICK ME</button> -->
-<!-- <router-outlet></router-outlet> -->
